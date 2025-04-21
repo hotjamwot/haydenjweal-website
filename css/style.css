@@ -259,9 +259,6 @@ a.column {
     }
 }
 
-/* Director page specific styles */
-/* This builds on the base styles.css */
-
 .career-page {
     overflow-y: auto;
     height: auto;
@@ -332,13 +329,13 @@ nav ul li.active a::after {
 .role-info {
     max-width: 800px;
     margin: var(--space-xxl) auto var(--space-xl);
-    padding: 0 var(--space-lg);
+    padding: 0 var(--space-lg) var(--space-xxl);
     text-align: center;
 }
 
 .role-info h2 {
     font-family: 'Jost', sans-serif;
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: var(--space-md);
     position: relative;
     display: inline-block;
@@ -358,191 +355,6 @@ nav ul li.active a::after {
     font-size: var(--space-sm);
     line-height: 1.6;
     color: #555;
-}
-
-/* PROJECTS */
-.projects {
-    margin-top: 100px; /* Adjust this value for more/less space */
-}
-
-/* Project styling */
-.project {
-    position: relative;
-    width: 100%;
-    max-width: 250px;
-    margin-bottom: 30px;
-    transition: transform 0.3s ease; /* Added transition for scaling the whole project */
-}
-
-/* Grid for projects */
-.project-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 1rem;
-    padding: 0 200px;
-    margin-bottom: 1.5rem;
-}
-
-/* Thumbnail styling */
-.project-thumbnail {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    margin-bottom: 10px;
-}
-
-.project-thumbnail img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-/* Hover effects on the image */
-.project:hover {
-    transform: scale(1.1); /* Scale up the entire project container */
-}
-
-/* Info box styling (appears below the poster) */
-.project-info-box {
-    position: relative;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 20px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease-in-out;
-    z-index: 1;
-    margin-top: 20px;
-    border-radius: 8px; /* Adjust the value to control the roundness */
-    overflow: hidden;
-}
-
-/* Show info box on hover */
-.project:hover .project-info-box {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Content inside the info box */
-.project-info-box-content {
-    font-family: 'Jost', sans-serif;
-}
-
-.project-info-box-content h3 {
-    font-size: 1.8rem;
-    color: var(--text-color);
-    margin-bottom: 10px;
-    line-height: 1.2;
-    transition: color 0.3s ease; /* Transition for title color change */
-}
-
-/* Title color change on hover */
-.project:hover .project-info-box-content h3 {
-    color: #fff; 
-}
-
-.project-info-box-content p {
-    font-size: 1rem;
-    color: #ccc;
-}
-
-.project-info-box-content .project-meta {
-    font-size: 0.9rem;
-    color: #ddd;
-}
-
-/* Optional: Adjust grid spacing and poster dimensions */
-.project a {
-    text-decoration: none;
-    color: inherit;
-}
-
-/* Responsive Grid Setup for smaller screens */
-@media (max-width: 768px) {
-    .project-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .project {
-        margin-bottom: 2rem;
-        max-width: 100%;
-    }
-}
-
-
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    width: 100%;
-    height: 0;
-    margin-bottom: var(--space-md);
-    border-radius: 6px;
-    overflow: hidden;
-    margin-bottom: var(--space-lg);
-}
-
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    width: 100%;
-    height: 0;
-    margin-bottom: var(--space-md);
-    border-radius: 6px;
-    overflow: hidden;
-    margin-bottom: var(--space-lg);
-}
-
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-.play-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    background-color: rgba(138, 79, 255, 0.8);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: var(--space-md);
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.video-container:hover .play-button {
-    background-color: var(--primary-purple);
-    transform: translate(-50%, -50%) scale(1.1);
-}
-
-.behind-scenes {
-    background-color: #fff;
-    padding: var(--space-md);
-    border-left: 3px solid var(--primary-purple);
-    margin-top: var(--space-md);
-}
-
-.behind-scenes h4 {
-    font-family: 'Jost', sans-serif;
-    margin-bottom: 0.8rem;
-    color: var(--primary-purple);
-}
-
-.behind-scenes p {
-    font-style: italic;
-    font-size: 0.95rem;
-    line-height: 1.5;
 }
 
 /* Contact section */

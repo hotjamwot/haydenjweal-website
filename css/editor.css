@@ -1,0 +1,215 @@
+/* Editor Projects Section */
+.editor-projects-section {
+    padding: var(--space-xl) var(--space-md);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.editor-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+}
+
+/* Editor Project Item */
+.editor-project-item {
+    background-color: var(--white);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.editor-project-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Editor Project Thumbnail */
+.editor-project-thumbnail {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.editor-project-thumbnail:hover .play-button {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.editor-project-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.editor-project-item:hover .editor-project-thumbnail img {
+    transform: scale(1.03);
+}
+
+/* YouTube video popups on thumbnail */
+.video-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-popup.active {
+    display: flex;
+}
+
+.video-container {
+    position: relative;
+    width: 90%;
+    max-width: 960px;
+    aspect-ratio: 16/9;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.close-video {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 8px;
+}
+
+/* Editor Project Details */
+.editor-project-details {
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.editor-project-title {
+    font-family: var(--heading-font);
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+.editor-project-item:hover .editor-project-title {
+    color: var(--primary-purple);
+}
+
+.editor-project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px var(--space-sm);
+    font-size: 0.85rem;
+    color: #777;
+    margin-bottom: 8px;
+}
+
+.editor-project-meta p {
+    position: relative;
+    padding-right: var(--space-sm);
+}
+
+.editor-project-meta p:not(:last-child)::after {
+    content: '•';
+    position: absolute;
+    right: 0;
+    color: #aaa;
+}
+
+.editor-project-quote {
+    font-style: italic;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    padding-top: 6px;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 6px;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+    .editor-projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .editor-projects-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+    
+    .editor-project-meta {
+        flex-direction: column;
+        gap: 2px;
+    }
+    
+    .editor-project-meta p:not(:last-child)::after {
+        display: none;
+    }
+    
+    .career-header {
+        flex-direction: column;
+        gap: var(--space-sm);
+        text-align: center;
+    }
+    
+    .editor-project-thumbnail {
+        height: auto;
+        aspect-ratio: 16/9;
+    }
+}
+
+@media (max-width: 480px) {
+    .editor-projects-section {
+        padding: var(--space-md) var(--space-sm);
+    }
+    
+    .editor-role-info {
+        padding: var(--space-md);
+    }
+    
+    .editor-project-details {
+        padding: var(--space-sm);
+    }
+}
