@@ -65,6 +65,37 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+   // Writer page specific code - script dropdown menu
+   const dropdownButtons = document.querySelectorAll('.dropdown-toggle');
+   if (dropdownButtons.length > 0) {
+       dropdownButtons.forEach(button => {
+           button.addEventListener('click', (e) => {
+               e.preventDefault();
+               e.stopPropagation();
+               const dropdown = button.nextElementSibling;
+               
+               // Close all other dropdowns first
+               document.querySelectorAll('.dropdown-content').forEach(content => {
+                   if (content !== dropdown) {
+                       content.style.display = 'none';
+                   }
+               });
+               
+               // Toggle current dropdown
+               dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+           });
+       });
+
+       // Close dropdown when clicking outside
+       document.addEventListener('click', (e) => {
+           if (!e.target.closest('.script-dropdown')) {
+               document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                   dropdown.style.display = 'none';
+               });
+           }
+       });
+   }
+   
     // Director page specific code
     if (document.body.classList.contains('career-page')) {
         const infoBox = document.getElementById('info-box');

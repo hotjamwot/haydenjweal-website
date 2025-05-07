@@ -1,0 +1,229 @@
+/* Writer page specific styles */
+.writer-category {
+    padding: var(--space-xl) var(--space-md);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.category-title {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    font-family: var(--heading-font);
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--text-color);
+    text-transform: uppercase;
+    position: relative;
+}
+
+.category-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-purple);
+}
+
+.writer-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+}
+
+/* Book-specific grid layout */
+.writer-category:has(.book-thumbnail) .writer-projects-grid {
+    grid-template-columns: repeat(3, minmax(200px, 250px));
+    justify-content: center;
+}
+
+.writer-project-item {
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.writer-project-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.writer-project-thumbnail {
+    width: 100%;
+    aspect-ratio: 16/9;
+    position: relative;
+    cursor: pointer;
+    border-radius: 6px 6px 0 0;
+    overflow: hidden;
+}
+
+.writer-project-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.writer-project-details {
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.writer-project-title {
+    font-family: var(--heading-font);
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--text-color);
+    text-transform: uppercase;
+}
+
+.writer-project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px var(--space-sm);
+    font-size: 0.85rem;
+    color: #777;
+}
+
+.writer-project-quote {
+    font-style: italic;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    padding-top: var(--space-xs);
+    border-top: 1px solid #f0f0f0;
+}
+
+.script-button {
+    display: inline-block;
+    margin-top: var(--space-sm);
+    padding: 8px 16px;
+    background-color: var(--primary-purple);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.script-button:hover {
+    background-color: #7340d9;
+    transform: translateY(-2px);
+}
+
+.book-thumbnail {
+    max-height: 440px;
+    position: relative;
+    border-radius: 6px 6px 0 0;
+    aspect-ratio: 1/1.6;
+    overflow: hidden;
+}
+
+.book-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.writer-project-item:hover .book-thumbnail img {
+    transform: scale(1.03);
+}
+
+.script-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 8px 0;
+    z-index: 1;
+    margin-bottom: 8px;
+}
+
+.dropdown-content a {
+    color: var(--text-color);
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #f5f5f5;
+    color: var(--primary-purple);
+}
+
+.script-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-toggle::after {
+    content: '▾';
+    margin-left: 6px;
+}
+
+.writer-project-thumbnail:hover .play-button {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.writer-project-thumbnail {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+
+/* Add this CSS rule */
+.writer-project-thumbnail img[src*="EmersonBlackAuthorPicture"] {
+    object-fit: cover;
+    object-position: top;
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+    .writer-projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .writer-category:has(.book-thumbnail) .writer-projects-grid {
+        grid-template-columns: repeat(2, minmax(180px, 250px));
+    }
+}
+
+@media (max-width: 768px) {
+    .writer-projects-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+
+    .writer-category:has(.book-thumbnail) .writer-projects-grid {
+        grid-template-columns: minmax(160px, 220px);
+    }
+    
+    .writer-project-meta {
+        flex-direction: column;
+        gap: 2px;
+    }
+    
+    .writer-project-meta p:not(:last-child)::after {
+        display: none;
+    }
+}
