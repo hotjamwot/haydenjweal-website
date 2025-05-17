@@ -75,6 +75,16 @@ h1 {
     letter-spacing: 1px;
 }
 
+header h1 a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+header h1 a:hover {
+    color: var(--primary-purple);
+}
+
 .tagline {
     font-weight: 300;
     font-size: 1.var(--space-sm);
