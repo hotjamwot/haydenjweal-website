@@ -58,6 +58,18 @@
     transform: translateY(-2px);
 }
 
+/* Override main styles for bio page */
+body.career-page {
+    height: auto;
+    min-height: 100vh;
+    overflow: auto;
+}
+
+.career-page main {
+    height: auto;
+    flex-grow: 0;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .bio-content {
