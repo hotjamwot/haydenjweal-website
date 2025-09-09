@@ -1,4 +1,34 @@
+function openVideo(videoUrl) {
+    const modal = document.getElementById('videoModal');
+    const iframe = document.getElementById('modalVideo');
+    iframe.src = videoUrl;
+    modal.classList.add('active');
+}
+
+function closeVideo() {
+    const modal = document.getElementById('videoModal');
+    const iframe = document.getElementById('modalVideo');
+    iframe.src = '';
+    modal.classList.remove('active');
+}
+
 document.addEventListener('DOMContentLoaded', function () {
+    // Add keyboard handler for video modal
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeVideo();
+        }
+    });
+
+    // Add click handler for video modal background
+    const videoModal = document.getElementById('videoModal');
+    if (videoModal) {
+        videoModal.addEventListener('click', function(e) {
+            if (e.target === videoModal) {
+                closeVideo();
+            }
+        });
+    }
     // General page logic for columns
     const columns = document.querySelectorAll('.column');
     
