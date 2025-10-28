@@ -297,7 +297,7 @@ nav ul li.active a::after {
 /* Role info section */
 .role-info {
     max-width: 800px;
-    margin: var(--space-lg) auto var(--space-xl);
+    margin: var(--space-md) auto var(--space-md);
     text-align: center;
 }
 

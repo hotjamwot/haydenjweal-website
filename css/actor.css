@@ -1,0 +1,142 @@
+/* Actor Projects Section */
+.actor-projects-section {
+    padding: var(--space-xl) var(--space-md);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.role-info-title {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    margin-top: var(--space-xl);
+    font-family: var(--heading-font);
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--text-color);
+    text-transform: uppercase;
+    position: relative;
+}
+
+/* Actor Project Item */
+.actor-project-item {
+    display: grid; /* Change to grid layout */
+    grid-template-columns: 20% 1fr 1fr; /* Three columns: Thumbnail (20%), Left Content (1fr), Right Content (1fr) */
+    align-items: center; /* Vertically center items */
+    margin-bottom: var(--space-sm);  /* Spacing between items */
+    background-color: var(--white);
+    border-radius: 6px;
+    overflow: hidden; /* Good for containing content within rounded corners */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    padding: var(--space-sm); /* Added padding */
+    position: relative;  /* Add for stacking context if needed */
+}
+
+.actor-project-item:hover {
+    transform: translateY(-2px); /* Reduced hover effect */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); /* Reduced shadow */
+}
+
+/* Actor Project Thumbnail */
+.actor-project-thumbnail {
+    width: 100%; /* Adjust to full width */
+    height: auto;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 4px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Left Column Container */
+.actor-project-left {
+    text-align: left;
+    padding-left: var(--space-xl)
+}
+
+/* Right Column Container */
+.actor-project-right {
+    text-align: right; /* Right-align the content */
+}
+
+/* Actor Project Title */
+.actor-project-title {
+    font-family: var(--heading-font);
+    font-size: 1.1rem; /* Adjusted font size */
+    font-weight: 500;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+    display: block; /* Ensure it's on its own line */
+    margin-bottom: 2px;
+}
+
+.actor-project-item:hover .actor-project-title {
+    color: var(--primary-purple);
+}
+
+/* Actor Project Role */
+.actor-project-role {
+    font-style: italic;
+    color: #666;
+    display: block;
+}
+
+/* Actor Project Type */
+.actor-project-type {
+    color: #777;
+    display: block;
+}
+
+/* Actor Project Year */
+.actor-project-year {
+    color: #777;
+    font-size: 0.9rem;
+    display: block;
+}
+
+/* Play Button */
+.actor-project-item .play-button { /* More specific selector */
+    position: absolute;
+    top: 50%;
+    left: 20%; /* Adjust to the new layout */
+    transform: translate(-50%, -50%);
+    width: 36px;  /* Slightly smaller icon */
+    height: 36px;
+    background: rgba(0, 0, 0, 0.6); /* Slightly lighter background */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px; /* Slightly smaller icon */
+    opacity: 0;      /* Hidden by default */
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.actor-project-item:hover .play-button {
+    opacity: 1;    /* Visible on hover */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .actor-project-item {
+        grid-template-columns: 1fr; /* Single column on small screens */
+        align-items: flex-start; /* Align items to the top */
+    }
+
+    .actor-project-left,
+    .actor-project-right {
+        text-align: left; /* Left align content on small screens */
+    }
+
+    .actor-project-thumbnail {
+        width: 100%; /* Take full width on small screens */
+        margin-bottom: var(--space-sm);
+    }
+
+    .actor-project-item .play-button {
+        left: 50%; /* Center the play button on small screens */
+    }
+}

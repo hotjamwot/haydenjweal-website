@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
             closeVideo();
         }
     });
-
     // Add click handler for video modal background
     const videoModal = document.getElementById('videoModal');
     if (videoModal) {
@@ -29,6 +28,33 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+     // Actor page specific code
+     if (document.querySelector('.actor-project-item')) {  // Check if the actor page elements exist
+        const projectLinks = document.querySelectorAll('.actor-project-item a'); // Select the <a> elements
+        const popup = document.querySelector('.video-popup');
+        const closeBtn = document.querySelector('.close-video');
+        const iframe = document.querySelector('.video-popup iframe');
+        projectLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent the link from navigating
+                console.log('Video link clicked');
+                const videoId = this.getAttribute('data-video-id'); // Get the video ID from the data attribute
+                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                popup.classList.add('active');
+            });
+        });
+        closeBtn.addEventListener('click', () => {
+            popup.classList.remove('active');
+            iframe.src = '';
+        });
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                popup.classList.remove('active');
+                iframe.src = '';
+            }
+        });
+    }
+    
     // General page logic for columns
     const columns = document.querySelectorAll('.column');
     
