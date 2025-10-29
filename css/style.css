@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap');
 
-/* Base styles */
+/* --- GLOBAL STYLES (Keep these) --- */
 :root {
     --primary-purple: #8A4FFF;
     --light-purple: #B28AFF;
@@ -28,10 +28,8 @@
 body {
     font-family: var(--body-font);
     color: var(--text-color);
-    height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
 }
 
 /* Reusable button styles */
@@ -63,11 +61,6 @@ body {
 }
 
 /* Header styles */
-header {
-    text-align: center;
-    padding: var(--space-lg);
-}
-
 h1 {
     font-family: var(--heading-font);
     font-weight: 500;
@@ -92,147 +85,76 @@ header h1 a:hover {
     letter-spacing: 0.5px;
 }
 
-/* Main content / Columns */
-main {
-    display: flex;
-    flex-grow: 1;
-    height: calc(100vh - 120px); /* Adjust based on header height */
-}
-
-.column {
-    flex: 1;
+/* --- HERO SECTION --- */
+#hero {
     position: relative;
+    height: 100vh;
     overflow: hidden;
-    transition: flex 0.5s ease;
-    cursor: pointer;
 }
 
-.column:hover {
-    flex: 1.1;
-}
-
-.column video {
+.hero-video-container {
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.hero-video-container video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.8);
-    transition: filter 0.5s ease, transform 0.5s ease;
 }
 
-.column:hover video {
-    filter: brightness(0.9);
-    transform: scale(1.05);
-}
-
-.column-overlay {
+#hero .career-header {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    z-index: 2;
+    color: var(--white);
+    padding: var(--space-sm) var(--space-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#hero .header-content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: var(--space-xl) var(--space-lg);
-    z-index: 10;
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.3) 0%,
-        rgba(0, 0, 0, 0) 30%,
-        rgba(0, 0, 0, 0) 60%,
-        rgba(0, 0, 0, 0.5) 100%
-    );
+    align-items: flex-start;
+}
+
+#hero .career-header h1 a {
     color: var(--white);
 }
 
-/* Column titles */
-.column h2 {
-    font-family: var(--heading-font);
-    font-size: var(--space-lg);
-    font-weight: 500;
-    position: relative;
-    display: inline-block;
+#hero .career-header h1 a:hover {
+    color: var(--primary-purple);
 }
 
-.column h2::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 3px;
-    background-color: var(--primary-purple);
-    transition: width 0.3s ease;
+#hero .career-header nav ul {
+    display: flex;
+    list-style: none;
+    gap: var(--space-lg);
+    margin: 0; 
+    padding: 0;
 }
 
-.column:hover h2::after {
-    width: 100%;
-}
-
-/* View work label */
-.view-work {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+#hero .career-header nav ul li a {
     color: var(--white);
-    font-weight: 500;
-    font-size: var(--space-sm);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    padding: 10px 20px;
-}
-
-.column:hover .view-work {
-    opacity: 1;
-}
-
-/* Quotes */
-.quote {
-    max-width: 90%;
-    transform: translateY(20px);
-    opacity: 0.8;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.column:hover .quote {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-a.column { 
     text-decoration: none;
-    color: inherit; 
-    display: block; 
 }
 
-.quote p {
-    font-style: italic;
-    font-weight: 300;
-    margin-bottom: var(--space-xs);
-    font-size: 0.95rem;
-    line-height: 1.4;
+#hero .career-header nav ul li a:hover,
+#hero .career-header nav ul li.active a {
+    color: var(--primary-purple);
 }
 
-.quote-author {
-    font-size: 0.8rem;
-    display: block;
-}
-
-/* Column-specific backgrounds */
-#director-column {
-    background-color: #1a1a1a;
-}
-
-#editor-column {
-    background-color: #242424;
-}
-
-#writer-column {
-    background-color: #1f1f1f;
+#hero .career-header nav ul li a::after {
+    width: 0;  
 }
 
 /* Header styles for career pages */
@@ -294,36 +216,33 @@ nav ul li.active a::after {
     width: 100%;
 }
 
-/* Role info section */
-.role-info {
-    max-width: 800px;
-    margin: var(--space-md) auto var(--space-md);
+/* General Section Styles (Applies to all top-level sections) */
+.top-section { 
+    padding: var(--space-xl) var(--space-md);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.top-section-title { 
     text-align: center;
-}
-
-.role-info h2 {
-    font-family: 'Jost', sans-serif;
+    margin-bottom: var(--space-xl);
+    font-family: var(--heading-font);
     font-size: 2rem;
-    margin: var(--space-md);
-    position: relative;
-    display: inline-block;
+    font-weight: 500;
+    color: var(--text-color);
     text-transform: uppercase;
+    position: relative;
 }
 
-.role-info h2::after {
+.top-section-title::after {
     content: '';
     position: absolute;
     bottom: -10px;
-    left: 25%;
-    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
     height: 3px;
     background-color: var(--primary-purple);
-}
-
-.role-info p {
-    font-size: 0.85rem;
-    line-height: 1.6;
-    color: #555;
 }
 
 /* YouTube video popups on thumbnail */
@@ -390,6 +309,51 @@ nav ul li.active a::after {
     padding: 8px;
 }
 
+/* Bio-CV section */
+.bio-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0; 
+    margin-bottom: var(--space-xxl);
+}
+
+.bio-content {
+    display: flex;
+    column-gap: 6rem;
+    padding: var(--space-lg);
+    align-items: center;
+}
+
+.bio-image {
+    flex: 0 0 40%;
+}
+
+.bio-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image-caption {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: var(--space-xs);
+    font-style: italic;
+    line-height: 1.4;
+}
+
+.bio-text {
+    flex: 0 0 45%;
+}
+
+.bio-text p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: #333;
+    text-align: justify;
+}
+
 /* Contact section */
 .contact {
     text-align: center;
@@ -407,6 +371,12 @@ nav ul li.active a::after {
     margin-bottom: var(--space-lg);
 }
 
+.career-page {
+    overflow-y: auto;
+    height: auto;
+    background-color: var(--white);
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
     body {
@@ -419,19 +389,6 @@ nav ul li.active a::after {
         height: auto;
     }
     
-    .column {
-        height: 33vh;
-        min-height: 250px;
-    }
-    
-    .column:hover {
-        flex: 1;
-    }
-    
-    .column-overlay {
-        padding: var(--space-lg) var(--space-sm);
-    }
-    
     h1 {
         font-size: var(--space-lg);
     }
@@ -440,16 +397,7 @@ nav ul li.active a::after {
         font-size: var(--space-sm);
         text-transform: uppercase;
     }
-}
 
-.career-page {
-    overflow-y: auto;
-    height: auto;
-    background-color: var(--white);
-}
-
-
-@media (max-width: 600px) {
     .career-header {
         flex-direction: column;
         gap: var(--space-sm);
@@ -457,5 +405,13 @@ nav ul li.active a::after {
     
     nav ul {
         gap: var(--space-sm);
+    }
+
+        .bio-content {
+        flex-direction: column;
+    }
+
+    .bio-image, .bio-text {
+        flex: 0 0 100%;
     }
 }
