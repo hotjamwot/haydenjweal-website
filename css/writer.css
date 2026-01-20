@@ -41,37 +41,7 @@
     transition: transform 0.3s ease;
 }
 
-.writer-project-details {
-    padding: var(--space-md);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-}
-
-.writer-project-title {
-    font-family: var(--heading-font);
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: var(--text-color);
-    text-transform: uppercase;
-}
-
-.writer-project-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px var(--space-sm);
-    font-size: 0.85rem;
-    color: #777;
-}
-
-.writer-project-quote {
-    font-style: italic;
-    color: #666;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    padding-top: var(--space-xs);
-    border-top: 1px solid #f0f0f0;
-}
+/* Writer page specific styles */
 
 .script-button {
     display: inline-block;

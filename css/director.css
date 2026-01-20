@@ -44,48 +44,8 @@
     transition: transform 0.3s ease;
 }
 
-.director-project-details {
-    padding: var(--space-md);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-}
+/* Director page specific styles */
 
-.director-project-title {
-    font-family: var(--heading-font);
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: var(--text-color);
-    margin-bottom: 4px;
-    transition: color 0.3s ease;
-    text-transform: uppercase;
-}
-
-.director-project-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px var(--space-sm);
-    font-size: 0.85rem;
-    color: #777;
-    margin-bottom: 8px;
-}
-
-.director-project-meta p {
-    position: relative;
-    padding-right: var(--space-sm);
-}
-
-.director-project-meta p:not(:last-child)::after {
-    content: '•';
-    position: absolute;
-    right: 0;
-}
-
-.director-project-quote {
-    font-size: 0.9rem;
-    color: #666;
-    line-height: 1.6;
-}
 /* Add responsive breakpoints */
 @media (max-width: 1200px) {
     .director-projects-grid {
