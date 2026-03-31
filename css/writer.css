@@ -7,9 +7,10 @@
 }
 
 /* Book-specific grid layout */
-.writer-category:has(.book-thumbnail) .writer-projects-grid {
-    grid-template-columns: repeat(3, minmax(200px, 250px));
+.top-section:has(.book-thumbnail) .writer-projects-grid {
+    grid-template-columns: repeat(4, 280px);
     justify-content: center;
+    gap: var(--space-lg);
 }
 
 .writer-project-item {
@@ -61,7 +62,6 @@
 }
 
 .book-thumbnail {
-    max-height: 440px;
     position: relative;
     border-radius: 6px 6px 0 0;
     aspect-ratio: 1/1.6;
