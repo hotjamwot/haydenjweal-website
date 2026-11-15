@@ -2,12 +2,17 @@
 
 /* --- GLOBAL STYLES (Keep these) --- */
 :root {
-    --primary-purple: #8A4FFF;
-    --light-purple: #B28AFF;
-    --dark-purple: #6B3DCB;
-    --text-color: #333333;
-    --light-grey: #F5F5F5;
-    --white: #FFFFFF;
+    /* Accent (cyan) */
+    --accent: #3fc6c6;
+    --accent-hover: #2fb0b0;
+    /* Light theme (default) */
+    --bg: #ffffff;
+    --bg-elevated: #f5f5f5;
+    --text: #333333;
+    --text-muted: #666666;
+    --text-subtle: #888888;
+    --border: #e5e7eb;
+    --surface: #ffffff;
     --heading-font: 'Jost', sans-serif;
     --body-font: 'Poppins', sans-serif;
         /* Spacing */
@@ -17,6 +22,23 @@
         --space-lg: 2rem;      /* 32px */
         --space-xl: 3rem;      /* 48px */
         --space-xxl: 4rem;     /* 64px */
+    /* Legacy aliases */
+    --primary-purple: var(--accent);
+    --light-purple: var(--accent);
+    --dark-purple: var(--accent-hover);
+    --text-color: var(--text);
+    --light-grey: var(--bg-elevated);
+    --white: #ffffff;
+}
+
+[data-theme="dark"] {
+    --bg: #0f1115;
+    --bg-elevated: #1a1d23;
+    --text: #e6e6e6;
+    --text-muted: #a0a0a0;
+    --text-subtle: #7a7a7a;
+    --border: #2a2d33;
+    --surface: #1a1d23;
 }
 
 * {
@@ -28,6 +50,7 @@
 body {
     font-family: var(--body-font);
     color: var(--text-color);
+    background-color: var(--bg);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -66,7 +89,7 @@ body {
     font-size: 0.75rem;
     font-weight: 600;
     color: var(--primary-purple);
-    background-color: rgba(156, 39, 176, 0.1);
+    background-color: rgba(63, 198, 198, 0.12);
     padding: 8px 8px;
     border-radius: 4px;
     display: inline-block;
@@ -90,10 +113,10 @@ body {
 /* Project quote styles - consolidated from director, editor, and writer */
 .project-quote {
     font-size: 0.9rem;
-    color: #666;
+    color: var(--text-muted);
     line-height: 1.5;
     padding-top: var(--space-xs);
-    border-top: 1px solid #f0f0f0;
+    border-top: 1px solid var(--border);
     margin-top: 6px;
     margin-bottom: var(--space-sm);
 }
@@ -122,7 +145,7 @@ body {
     flex-wrap: wrap;
     gap: 4px var(--space-sm);
     font-size: 0.85rem;
-    color: #777;
+    color: var(--text-muted);
     margin-bottom: 8px;
 }
 
@@ -135,7 +158,7 @@ body {
     content: '•';
     position: absolute;
     right: 0;
-    color: #aaa;
+    color: var(--text-subtle);
 }
 
 /* Header styles */
@@ -423,7 +446,7 @@ nav ul li.active a::after {
 
 .image-caption {
     font-size: 0.9rem;
-    color: #666;
+    color: var(--text-muted);
     margin-top: var(--space-xs);
     font-style: italic;
     line-height: 1.4;
@@ -436,8 +459,30 @@ nav ul li.active a::after {
 .bio-text p {
     margin-bottom: 1.5rem;
     line-height: 1.6;
-    color: #333;
+    color: var(--text);
     text-align: justify;
+}
+
+/* Theme toggle */
+.theme-toggle {
+    position: fixed;
+    bottom: var(--space-md);
+    right: var(--space-md);
+    z-index: 1100;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background-color: var(--surface);
+    color: var(--text);
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.08);
 }
 
 /* Contact section */
@@ -460,7 +505,7 @@ nav ul li.active a::after {
 .career-page {
     overflow-y: auto;
     height: auto;
-    background-color: var(--white);
+    background-color: var(--bg);
 }
 
 /* Responsive styles */

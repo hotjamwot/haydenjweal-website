@@ -4,9 +4,9 @@
   --primary: var(--primary-purple);
   --primary-light: var(--light-purple);
   --primary-dark: var(--dark-purple);
-  --primary-purple: #8A4FFF;
-  --light-purple: #B28AFF;
-  --dark-purple: #6B3DCB;
+  --primary-purple: #3fc6c6;
+  --light-purple: #3fc6c6;
+  --dark-purple: #2fb0b0;
   --text-primary: var(--text-color);
   --text-secondary: #6b7280;
   --text-muted: #9ca3af;
@@ -30,6 +30,20 @@
   --space-lg: 2rem;      /* 32px */
   --space-xl: 3rem;      /* 48px */
   --space-xxl: 4rem;     /* 64px */
+}
+
+[data-theme="dark"] {
+  --text-color: #e6e6e6;
+  --text-primary: #e6e6e6;
+  --text-secondary: #a0a0a0;
+  --text-muted: #7a7a7a;
+  --background: #0f1115;
+  --surface: #1a1d23;
+  --border: #2a2d33;
+  --white: #1a1d23;
+  --light-grey: #1a1d23;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
 }
 
 * {
@@ -62,7 +76,7 @@ body {
   gap: var(--space-xs);
   padding: var(--space-sm) var(--space-md);
   background-color: var(--primary-purple);
-  color: var(--white);
+  color: #ffffff;
   text-decoration: none;
   border-radius: 6px;
   font-family: var(--body-font);
@@ -88,7 +102,7 @@ body {
    HERO SECTION
    ============================================= */
 .hero {
-  background: linear-gradient(135deg, var(--background) 0%, #f8fafc 100%);
+  background: linear-gradient(135deg, var(--background) 0%, var(--surface) 100%);
   padding: var(--space-xxl) 0;
 }
 
@@ -144,7 +158,7 @@ body {
 .hero-intro-col .testimonial {
   margin-top: var(--space-xl);
   padding: var(--space-md);
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--surface);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }

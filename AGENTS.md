@@ -10,6 +10,7 @@ Static portfolio site hosted on **GitHub Pages** (domain `haydenjweal.com`, see 
 - `css/style.css` — global styles + shared components/design tokens.
 - `css/{role}.css` — page-specific styles only.
 - `script.js` — shared interactions for all pages.
+- `theme.js` — theme init (runs in `<head>`); sets `data-theme` from localStorage/prefers-color-scheme. Default dark.
 - `img/`, `mov/`, `pdf/` — assets (images, videos, scripts/CV).
 - `tools/check_consistency.py` — verifies nav/contact/shared assets match across pages. Run: `python3 tools/check_consistency.py`.
 - `robots.txt`, `sitemap.xml`, `404.html` — SEO + not-found handling (GitHub Pages).

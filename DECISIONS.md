@@ -70,6 +70,13 @@ Add an entry when making a non-obvious or structural choice. Keep entries short.
 - **Rationale:** One consistent point of contact.
 - **Consequences:** Update all pages if email changes.
 
+## D011 — Dark mode + cyan accent
+- **Date:** 2026-11-16
+- **Status:** Accepted
+- **Decision:** Site defaults to dark mode with a light/dark toggle (persisted in localStorage, respects nothing on first visit — dark is default). Accent color changed from purple `#8A4FFF` to cyan `#3fc6c6`. Theme tokens defined in `style.css` (`:root` light, `[data-theme="dark"]` dark) plus `represent.css` own tokens; `theme.js` runs in `<head>` to set `data-theme` before paint and avoid FOUC. Toggle button injected by `script.js`.
+- **Rationale:** Darker, sleeker look requested; cyan accent preferred; toggle keeps flexibility for visitors.
+- **Consequences:** All new CSS must use theme tokens (not hardcoded colors); `--white` stays pure white for text on accent; card backgrounds use `--surface`. New pages must include `theme.js` in `<head>`.
+
 ## D010 — Site hygiene pass
 - **Date:** 2026-11-16
 - **Status:** Accepted

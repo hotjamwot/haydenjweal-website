@@ -13,7 +13,7 @@
 
 /* Editor Project Item */
 .editor-project-item {
-    background-color: var(--white);
+    background-color: var(--surface);
     border-radius: 6px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;

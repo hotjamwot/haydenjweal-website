@@ -23,7 +23,7 @@
     align-items: center;
     gap: var(--space-md);
     margin-bottom: var(--space-sm);
-    background-color: var(--white);
+    background-color: var(--surface);
     border-radius: 6px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -148,13 +148,13 @@
 /* Actor Project Role */
 .actor-project-role {
     font-style: italic;
-    color: #666;
+    color: var(--text-muted);
     display: block;
 }
 
 /* Actor Project Director */
 .actor-project-director {
-    color: #888;
+    color: var(--text-subtle);
     font-size: 0.8rem;
     display: block;
     margin-top: 2px;
@@ -162,13 +162,13 @@
 
 /* Actor Project Type */
 .actor-project-type {
-    color: #777;
+    color: var(--text-muted);
     display: block;
 }
 
 /* Actor Project Year */
 .actor-project-year {
-    color: #777;
+    color: var(--text-muted);
     font-size: 0.9rem;
     display: block;
 }
@@ -216,7 +216,7 @@
     color: inherit;
     border-radius: 6px;
     overflow: hidden;
-    background-color: var(--white);
+    background-color: var(--surface);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
@@ -289,14 +289,14 @@
 
 .actor-featured-year {
     display: block;
-    color: #777;
+    color: var(--text-muted);
     font-size: 0.8rem;
     margin-top: 4px;
 }
 
 .actor-featured-director {
     display: block;
-    color: #888;
+    color: var(--text-subtle);
     font-size: 0.75rem;
     margin-top: 2px;
 }

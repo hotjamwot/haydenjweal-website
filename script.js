@@ -171,6 +171,24 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Theme toggle
+    (function () {
+        var btn = document.createElement('button');
+        btn.className = 'theme-toggle';
+        btn.type = 'button';
+        btn.setAttribute('aria-label', 'Toggle color theme');
+        var current = document.documentElement.getAttribute('data-theme') || 'dark';
+        btn.textContent = current === 'dark' ? '☀' : '☾';
+        btn.addEventListener('click', function () {
+            var now = document.documentElement.getAttribute('data-theme') || 'dark';
+            var next = now === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            try { localStorage.setItem('theme', next); } catch (e) {}
+            btn.textContent = next === 'dark' ? '☀' : '☾';
+        });
+        document.body.appendChild(btn);
+    })();
+
     loadVimeoThumbnails();
 
     // Editor page specific code
