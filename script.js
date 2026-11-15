@@ -12,6 +12,30 @@ function closeVideo() {
     modal.classList.remove('active');
 }
 
+// Fetch a Vimeo thumbnail from the video URL via the oEmbed API so it stays
+// in sync automatically. Falls back to the hardcoded thumbnail on error.
+async function loadVimeoThumbnails() {
+    const videoLinks = document.querySelectorAll('.video-link[href*="vimeo.com"]');
+    if (videoLinks.length === 0) return;
+
+    for (const link of videoLinks) {
+        const img = link.querySelector('img');
+        if (!img) continue;
+        try {
+            const response = await fetch(`https://vimeo.com/api/oembed.json?url=${encodeURIComponent(link.href)}`);
+            if (!response.ok) continue;
+            const data = await response.json();
+            if (data.thumbnail_url) {
+                // Request a larger thumbnail than the default oEmbed size
+                img.src = data.thumbnail_url.replace(/_\d+x\d+/, '_1280x720');
+                img.alt = img.alt || `${data.title} Thumbnail`;
+            }
+        } catch (err) {
+            console.warn('Could not load Vimeo thumbnail:', err);
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     // Add keyboard handler for video modal
     document.addEventListener('keydown', function(e) {
@@ -91,6 +115,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    loadVimeoThumbnails();
+
     // Editor page specific code
     if (document.querySelector('.video-popup')) {
         const videoLinks = document.querySelectorAll('.video-link');
@@ -102,8 +128,15 @@ document.addEventListener('DOMContentLoaded', function () {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 console.log('Video link clicked');
-                const videoId = this.href.split('v=')[1];
-                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                let embedUrl;
+                if (this.href.includes('vimeo.com')) {
+                    const videoId = this.href.split('/').pop();
+                    embedUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1`;
+                } else {
+                    const videoId = this.href.split('v=')[1];
+                    embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                }
+                iframe.src = embedUrl;
                 popup.classList.add('active');
             });
         });
