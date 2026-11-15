@@ -63,14 +63,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 e.preventDefault(); // Prevent the link from navigating
                 console.log('Video link clicked');
                 const videoId = this.getAttribute('data-video-id'); // Get the video ID from the data attribute
-                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                let embedUrl;
+                if (this.href.includes('vimeo.com')) {
+                    embedUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1`;
+                } else {
+                    embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                }
+                iframe.src = embedUrl;
                 popup.classList.add('active');
             });
         });
-        closeBtn.addEventListener('click', () => {
-            popup.classList.remove('active');
-            iframe.src = '';
-        });
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                popup.classList.remove('active');
+                iframe.src = '';
+            });
+        }
         popup.addEventListener('click', (e) => {
             if (e.target === popup) {
                 popup.classList.remove('active');
@@ -185,13 +193,4 @@ document.addEventListener('DOMContentLoaded', function () {
        });
    }
    
-    // Director page specific code
-    if (document.body.classList.contains('career-page')) {
-        const infoBox = document.getElementById('info-box');
-        if (infoBox) {
-            document.querySelectorAll('.project').forEach(project => {
-                // ...existing director page code...
-            });
-        }
-    }
 });

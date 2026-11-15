@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /represent.html
+
+Sitemap: https://haydenjweal.com/sitemap.xml

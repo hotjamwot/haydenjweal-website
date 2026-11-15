@@ -1,0 +1,8 @@
+# Treat media/binary assets as binary in diffs
+*.mp4 binary
+*.pdf binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.webp binary
+*.mp3 binary

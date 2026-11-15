@@ -30,6 +30,7 @@ body {
     color: var(--text-color);
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Reusable button styles */
@@ -157,7 +158,7 @@ header h1 a:hover {
 
 .tagline {
     font-weight: 300;
-    font-size: 1.var(--space-sm);
+    font-size: var(--space-sm);
     margin-top: var(--space-xs);
     letter-spacing: 0.5px;
 }
@@ -339,6 +340,14 @@ nav ul li.active a::after {
     font-size: 24px;
     opacity: 0;
     transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Reveal play button for keyboard/screen-reader users */
+.video-link:hover .play-button,
+.video-link:focus .play-button,
+.video-link:focus-visible .play-button,
+.video-link:focus-within .play-button {
+    opacity: 1;
 }
 
 .video-popup {
