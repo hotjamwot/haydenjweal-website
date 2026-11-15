@@ -118,6 +118,102 @@
     opacity: 1;    /* Visible on hover */
 }
 
+/* Featured Roles */
+.actor-featured {
+    max-width: 1200px;
+    margin: 0 auto var(--space-xxl);
+    padding: 0 var(--space-md);
+}
+
+.actor-featured-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+}
+
+.actor-featured-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: var(--white);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.actor-featured-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.actor-featured-thumb-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+.actor-featured-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.actor-featured-card .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.65);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 18px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.actor-featured-card:hover .play-button {
+    opacity: 1;
+}
+
+.actor-featured-info {
+    padding: var(--space-sm);
+}
+
+.actor-featured-title {
+    display: block;
+    font-family: var(--heading-font);
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.actor-featured-card:hover .actor-featured-title {
+    color: var(--primary-purple);
+}
+
+.actor-featured-role {
+    display: block;
+    font-style: italic;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.actor-featured-year {
+    display: block;
+    color: #777;
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
     .actor-project-item {
@@ -137,5 +233,9 @@
 
     .actor-project-item .play-button {
         left: 50%; /* Center the play button on small screens */
+    }
+
+    .actor-featured-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

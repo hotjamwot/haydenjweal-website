@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
      // Actor page specific code
      if (document.querySelector('.actor-project-item')) {  // Check if the actor page elements exist
-        const projectLinks = document.querySelectorAll('.actor-project-item a'); // Select the <a> elements
+        const projectLinks = document.querySelectorAll('.actor-project-item a, .actor-featured-card'); // Select the <a> elements
         const popup = document.querySelector('.video-popup');
         const closeBtn = document.querySelector('.close-video');
         const iframe = document.querySelector('.video-popup iframe');
