@@ -85,6 +85,54 @@ document.addEventListener('DOMContentLoaded', function () {
                 iframe.src = '';
             }
         });
+
+        // Enlarge buttons + lightbox for character images
+        const lightbox = document.getElementById('imageLightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const closeImage = document.querySelector('.close-image');
+        function openLightbox(src, alt) {
+            if (!lightbox || !lightboxImg) return;
+            lightboxImg.src = src;
+            lightboxImg.alt = alt || '';
+            lightbox.classList.add('active');
+        }
+        function closeLightbox() {
+            if (lightbox) lightbox.classList.remove('active');
+            if (lightboxImg) lightboxImg.src = '';
+        }
+        if (closeImage) closeImage.addEventListener('click', closeLightbox);
+        if (lightbox) lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) closeLightbox(); });
+
+        const addEnlargeBtn = (container, img) => {
+            if (!img) return;
+            const btn = document.createElement('button');
+            btn.className = 'actor-enlarge-btn';
+            btn.type = 'button';
+            btn.setAttribute('aria-label', 'View larger image');
+            btn.textContent = '⤢';
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                openLightbox(img.getAttribute('src'), img.getAttribute('alt'));
+            });
+            container.appendChild(btn);
+        };
+
+        document.querySelectorAll('.actor-project-item').forEach(item => {
+            const charSlot = item.querySelector('.actor-slot--char');
+            const charImg = charSlot ? charSlot.querySelector('.actor-slot-img') : null;
+            if (charSlot && charImg) {
+                addEnlargeBtn(charSlot, charImg);
+            } else {
+                const posterSlot = item.querySelector('.actor-slot--poster');
+                const posterImg = posterSlot ? posterSlot.querySelector('.actor-slot-img') : null;
+                if (posterSlot && posterImg) addEnlargeBtn(posterSlot, posterImg);
+            }
+        });
+        document.querySelectorAll('.actor-featured-card').forEach(card => {
+            addEnlargeBtn(card, card.querySelector('.actor-featured-thumb'));
+        });
     }
     
     // General page logic for columns

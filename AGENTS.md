@@ -51,8 +51,9 @@ Static portfolio site hosted on **GitHub Pages** (domain `haydenjweal.com`, see 
 2. Make minimal, targeted edits matching existing patterns.
 3. Verify: tags closed, links resolve, no console errors, nav consistent across pages.
 4. Record a new entry in `DECISIONS.md` only for non-obvious/architectural choices.
-5. Commit with a concise message; don't rewrite history.
-6. Change history lives in **git** (`git log`), not a separate changelog file.
+5. **Wait for the user to review the local HTML before committing or pushing.** Never commit/push without explicit user approval after local check.
+6. Commit with a concise message; don't rewrite history.
+7. Change history lives in **git** (`git log`), not a separate changelog file.
 
 ## Tracking files
 
